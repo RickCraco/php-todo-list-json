@@ -13,6 +13,12 @@ if(isset($_POST['text'])){
     file_put_contents('data.json', json_encode($todoList));
 }
 
+if(isset($_POST['remove'])){
+    $index = $_POST['remove'];
+    array_splice($todoList, $index, 1);
+    file_put_contents('data.json', json_encode($todoList));
+}
+
 header('Content-Type: application/json');
 echo json_encode($todoList);
 

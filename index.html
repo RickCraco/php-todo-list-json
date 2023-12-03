@@ -32,7 +32,7 @@
                     <li class="list-group-item list-group-item-action d-flex justify-content-between"
                         v-for="(todo,index) in filteredTasks()" :key="todo.id">
                         <span :class="{'done':todo.done}" @click="markAsDone(todo.id)">{{todo.text}}</span>
-                        <i class="fa-solid fa-skull-crossbones fa-beat" style="cursor:pointer" @click="removeTask(todo.id)"></i>
+                        <i class="fa-solid fa-skull-crossbones fa-beat" style="cursor:pointer" @click="removeTodo(index)"></i>
                     </li>
                 </ul>
                 <div v-else>
