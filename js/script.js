@@ -3,31 +3,11 @@ createApp({
     // contiene tutti i dati / le variabili 
     data(){
         return {
-            tasks: [
-                {
-                    id: 1,
-                    text: 'Diventare imperatore del mare',
-                    done: false,
-                }, 
-                {
-                    id: 2,
-                    text: 'Sconfiggere Kaido',
-                    done: true,
-                }, 
-                {
-                    id: 3,
-                    text: 'Usare nuove tecniche',
-                    done: false,
-                },
-                {
-                    id: 4,
-                    text: 'Trovare il One Piece',
-                    done: true,
-                },
-            ],
+            tasks: [],
             lastId: 4,
             todoText: '',
             filterValue: '',
+            apiUrl: 'server.php'
         }
     },
     // contiene le funzioni e i metodi 
@@ -62,5 +42,25 @@ createApp({
                 } 
             });
         },
+
+        readList(){
+            axios
+                .get(this.apiUrl)
+                .then((response) => {
+                    this.tasks = response.data
+                    console.log(this.tasks)
+                })
+        },
+        addTodo(){
+            let data = new FormData();
+            data.append('text', this.todoText)
+            axios.post(this.apiUrl, data).then((response) => {
+                this.tasks = response.data;
+            })
+            this.todoText = '';
+        }
+    },
+    mounted(){
+        this.readList();
     }
 }).mount('#app')

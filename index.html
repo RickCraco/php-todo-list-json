@@ -18,8 +18,8 @@
             <header class="text-center p-3">
                 <h1>Cosa fare per trovare il One Piece</h1>
                 <div class="my-3">
-                    <input type="text" class="form-control w-50 d-inline-block mx-3" v-model="todoText" @keyup.enter="addTask">
-                    <button class="btn btn-danger align-middle" @click="addTask">Add Task</button>
+                    <input type="text" class="form-control w-50 d-inline-block mx-3" v-model="todoText" @keyup.enter="addTodo">
+                    <button class="btn btn-danger align-middle" @click="addTodo">Add Task</button>
                     <select name="fatto" id="fatto" v-model="filterValue" class="mx-3 btn btn-light">
                         <option value="">Tutto</option>
                         <option value="1">Fatto</option>
