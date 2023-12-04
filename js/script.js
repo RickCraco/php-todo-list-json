@@ -65,6 +65,13 @@ createApp({
             axios.post(this.apiUrl, data).then((response) => {
                 this.tasks = response.data;
             })
+        },
+        doneTodo(index){
+            let data = new FormData();
+            data.append('done', index)
+            axios.post(this.apiUrl, data).then((response) => {
+                this.tasks = response.data;
+            })
         }
     },
     mounted(){
